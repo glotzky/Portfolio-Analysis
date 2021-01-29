@@ -102,7 +102,7 @@ def portfolio_allocation(df, weights):
   
   for counter, stock in enumerate(df_portfolio.columns[1:]):
     df_portfolio[stock] = df_portfolio[stock] * weights[counter]
-    df_portfolio[stock] = df_portfolio[stock] * 1000000
+    df_portfolio[stock] = df_portfolio[stock] * invested_amount
 
   df_portfolio['portfolio daily worth in $'] = df_portfolio[df_portfolio != 'Date'].sum(axis = 1)
   
