@@ -1,3 +1,5 @@
+#pip install scipy
+# pip install alpha_vantage
 import pandas as pd
 import plotly.express as px
 from copy import copy
@@ -15,12 +17,12 @@ ts = TimeSeries(key, output_format='pandas')
 #data, meta_data = ts.get_intraday(symbol=ticker,interval='1min', outputsize='full')
 #print(data.head(2))
 #meta_data
-data = ts.get_daily_adjusted(ticker)
+data = ts.get_daily_adjusted(ticker, outputsize='full')
 #data
 data = data[0]
 #data.columns
 data = data[['5. adjusted close']]
-data.rename(columns={'5. adjusted close':'Price'})
+data = data.rename(columns={'5. adjusted close':'Price'})
 #data.head()
 data.reset_index(level=0, inplace=True)
 data['Price'].round(2)
@@ -55,7 +57,8 @@ interactive_plot(normalize(df),'Normalized Prices')
 # np.random.seed(101)
 
 # Create random weights for the stocks and normalize them
-weights = np.array(np.random.random(3))
+num=1
+weights = np.array(np.random.random(num))
 weights
 
 # Ensure that the sum of all weights are = 1
@@ -140,4 +143,4 @@ print('Average daily return of portfolio = {}'.format(df_portfolio['portfolio da
 sharpe_ratio = df_portfolio['portfolio daily % return'].mean() / df_portfolio['portfolio daily % return'].std() * np.sqrt(252)
 print('Sharpe ratio of the portfolio is {}'.format(sharpe_ratio))
 # Portfolio Alpha Ratio
-alpha_ratio =
+print(weights)
