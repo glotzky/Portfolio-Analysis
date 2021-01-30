@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.fundamentaldata import FundamentalData
 print("Necessary libraries installed sucessfully.")
-key = 'FZKZD2AIOWEZM3AR'
+key = ####
 ticker = 'MSFT'
 ts = TimeSeries(key, output_format='pandas')
 #data, meta_data = ts.get_intraday(symbol=ticker,interval='1min', outputsize='full')
