@@ -17,7 +17,7 @@ st.markdown("This application is a Streamlit dashboard that can be used "
 num_stocks = st.slider('How many stocks are in your portfolio?: ',1,20,1)
 invested_amount = st.number_input('What is your principal amount invested?')
 
-key = ##insert key here
+key = 'FZKZD2AIOWEZM3AR'
 
 tickers = []
 
