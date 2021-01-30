@@ -16,8 +16,8 @@ st.markdown("This application is a Streamlit dashboard that can be used "
 
 num_stocks = st.slider('How many stocks are in your portfolio?: ',1,20,1)
 invested_amount = st.number_input('What is your principal amount invested?')
-key = 'FZKZD2AIOWEZM3AR'
-
+#key = 'FZKZD2AIOWEZM3AR'
+key = '3JQKJRWTURYJE58J'
 tickers = []
 
 def get_tickers(num_stocks):
@@ -26,11 +26,11 @@ def get_tickers(num_stocks):
 	return tickers
 get_tickers(num_stocks)
 
+
 ts = TimeSeries(key, output_format='pandas')
 
 
 #Append new dataframe
-
 def get_tickers_df(tickers):
 	port_data = pd.DataFrame({'Price' : [np.nan]})
 	for i in range(len(tickers)):
@@ -46,7 +46,9 @@ def get_tickers_df(tickers):
 			port_data = pd.concat([port_data, tic_data.reindex(port_data.index)], axis=1)
 	return port_data
 
+
 data = get_tickers_df(tickers)
+
 data.reset_index(level=0, inplace=True)
 data = data.rename(columns={'date':'Date'})
 st.write(data)
@@ -85,16 +87,16 @@ st.write(interactive_plot(normalize(df),'Normalized Prices'))
 st.header('Weights')
 option = st.selectbox(
      'Weights:',
-     ('Pre-determined', 'Randomized'))
+     ('Randomized', 'Pre-Determined'))
 if option == 'Randomized':
 	weights = np.array(np.random.random(num_stocks))
 	weights = weights/np.sum(weights)
 else:
 	weights = []
 	for i in range(num_stocks):
-		weights[i] = st.number_input("Weight for " + tickers[i])
-		while(weights[i]>=1 or weights[i]<=0):
-			weights[i] = st.number_input("Weight for " + tickers[i]+ " must be less than or equal to 1 and greater than 0: ")
+		weight = st.number_input("Weight for " + tickers[i])
+		#weight = st.number_input("Weight for " + tickers[i]+ " must be less than or equal to 1 and greater than 0: ")
+		weights.append(weight)
 	weights = weights/np.sum(weights)
 
 # Normalize the stock avalues 
