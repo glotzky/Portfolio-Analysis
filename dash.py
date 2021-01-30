@@ -16,8 +16,9 @@ st.markdown("This application is a Streamlit dashboard that can be used "
 
 num_stocks = st.slider('How many stocks are in your portfolio?: ',1,20,1)
 invested_amount = st.number_input('What is your principal amount invested?')
-#key = 'FZKZD2AIOWEZM3AR'
-key = '3JQKJRWTURYJE58J'
+
+key = ##insert key here
+
 tickers = []
 
 def get_tickers(num_stocks):
@@ -124,7 +125,7 @@ for i in range(1, len(df)):
 
 df_portfolio.round(decimals = 2)
 # TASK #5: PORTFOLIO ALLOCATION - DAILY RETURN/WORTH CALCULATION (FUNCTION)
-# Lets assume we have $1,000,000 to be invested and we will allocate this fund based on the weights of the stocks
+
 # We will create a function that takes in the stock prices along with the weights and retun:
 # (1) Daily value of each individual securuty in $ over the specified time period
 # (2) Overall daily worth of the entire portfolio 
@@ -183,4 +184,3 @@ st.write('Average daily return of portfolio = {}'.format(df_portfolio['portfolio
 # Portfolio sharpe ratio
 sharpe_ratio = df_portfolio['portfolio daily ''%'' return'].mean() / df_portfolio['portfolio daily ''%'' return'].std() * np.sqrt(252)
 st.write('Sharpe ratio of the portfolio is {}'.format(sharpe_ratio))
-# Portfolio Alpha Ratio
